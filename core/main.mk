@@ -332,6 +332,8 @@ ifneq (,$(user_variant))
     ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
   endif
 
+  ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=1
+
   ifeq ($(user_variant),userdebug)
     # Pick up some extra useful tools
     tags_to_install += debug
