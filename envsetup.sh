@@ -40,6 +40,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - installboot: Installs a boot.img to the connected device.
 - installrecovery: Installs a recovery.img to the connected device.
 - repodiff:  Diff 2 different branches or tags within the same repo
+- update: ProjectControl.
 
 Environment options:
 - SANITIZE_HOST: Set to 'true' to use ASAN for all host modules. Note that
@@ -2626,6 +2627,11 @@ do
     . $f
 done
 unset f
+
+# ProjectControl
+function update() {
+    $ANDROID_BUILD_TOP/build/UpdateProject $1
+}
 
 # Add completions
 check_bash_version && {
