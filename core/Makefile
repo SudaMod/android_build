@@ -232,7 +232,11 @@ endif
 	$(hide) TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)" \
 			TARGET_BUILD_FLAVOR="$(TARGET_BUILD_FLAVOR)" \
 			TARGET_DEVICE="$(TARGET_VENDOR_DEVICE_NAME)" \
+<<<<<<< HEAD
 			SM_DEVICE="$(TARGET_DEVICE)" \
+=======
+			CM_DEVICE="$(TARGET_DEVICE)" \
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
 			PRODUCT_NAME="$(TARGET_VENDOR_PRODUCT_NAME)" \
 			PRODUCT_BRAND="$(PRODUCT_BRAND)" \
 			PRODUCT_DEFAULT_LOCALE="$(call get-default-product-locale,$(PRODUCT_LOCALES))" \
@@ -1269,6 +1273,15 @@ endef
 $(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE)
 	$(call build-systemimage-target,$@)
 
+ifndef I_WANT_A_QUAIL_STAR
+ifneq ($(WITHOUT_CHECK_API),true)
+$(BUILT_SYSTEMIMAGE): checkapi
+ifneq ($(TARGET_DISABLE_CMSDK),true)
+$(BUILT_SYSTEMIMAGE): checkapi-cm
+endif
+endif
+endif
+
 INSTALLED_SYSTEMIMAGE := $(PRODUCT_OUT)/system.img
 SYSTEMIMAGE_SOURCE_DIR := $(TARGET_OUT)
 
@@ -2084,7 +2097,11 @@ endif
 ifeq ($(WITH_GMS),true)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
 else
+<<<<<<< HEAD
 ifneq ($(SM_BUILD),)
+=======
+ifneq ($(CM_BUILD),)
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
@@ -2122,14 +2139,24 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE)
 	   $(if $(OEM_OTA_CONFIG), -o $(OEM_OTA_CONFIG)) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
+<<<<<<< HEAD
 SM_TARGET_PACKAGE := $(PRODUCT_OUT)/$(SM_VERSION).zip
+=======
+CM_TARGET_PACKAGE := $(PRODUCT_OUT)/cm-$(CM_VERSION).zip
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
+<<<<<<< HEAD
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(SM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(SM_TARGET_PACKAGE) > $(SM_TARGET_PACKAGE).md5sum
 	@echo "Package Complete: $(SM_TARGET_PACKAGE)"
+=======
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CM_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(CM_TARGET_PACKAGE) > $(CM_TARGET_PACKAGE).md5sum
+	@echo "Package Complete: $(CM_TARGET_PACKAGE)"
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
 
 endif    # build_ota_package
 # -----------------------------------------------------------------

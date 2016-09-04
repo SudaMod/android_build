@@ -147,6 +147,7 @@ function check_product()
         return
     fi
 
+<<<<<<< HEAD
     if (echo -n $1 | grep -q -e "^sm_") ; then
        SM_BUILD=$(echo -n $1 | sed -e 's/^sm_//g')
        export BUILD_NUMBER=$((date +%s%N ; echo $SM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10)
@@ -154,6 +155,15 @@ function check_product()
        SM_BUILD=
     fi
     export SM_BUILD
+=======
+    if (echo -n $1 | grep -q -e "^cm_") ; then
+       CM_BUILD=$(echo -n $1 | sed -e 's/^cm_//g')
+       export BUILD_NUMBER=$((date +%s%N ; echo $CM_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10)
+    else
+       CM_BUILD=
+    fi
+    export CM_BUILD
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -567,7 +577,11 @@ function print_lunch_menu()
        echo "  (ohai, koush!)"
     fi
     echo
+<<<<<<< HEAD
     if [ "z${SM_DEVICES_ONLY}" != "z" ]; then
+=======
+    if [ "z${CM_DEVICES_ONLY}" != "z" ]; then
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
        echo "Breakfast menu... pick a combo:"
     else
        echo "Lunch menu... pick a combo:"
@@ -581,7 +595,11 @@ function print_lunch_menu()
         i=$(($i+1))
     done | column
 
+<<<<<<< HEAD
     if [ "z${SM_DEVICES_ONLY}" != "z" ]; then
+=======
+    if [ "z${CM_DEVICES_ONLY}" != "z" ]; then
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
        echo "... and don't forget the bacon!"
     fi
 
@@ -604,10 +622,17 @@ function breakfast()
 {
     target=$1
     local variant=$2
+<<<<<<< HEAD
     SM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
     for f in `/bin/ls vendor/sm/vendorsetup.sh 2> /dev/null`
+=======
+    CM_DEVICES_ONLY="true"
+    unset LUNCH_MENU_CHOICES
+    add_lunch_combo full-eng
+    for f in `/bin/ls vendor/cm/vendorsetup.sh 2> /dev/null`
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
         do
             echo "including $f"
             . $f
@@ -623,11 +648,19 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
+<<<<<<< HEAD
             # This is probably just the SM model name
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
             lunch sm_$target-$variant
+=======
+            # This is probably just the CM model name
+            if [ -z "$variant" ]; then
+                variant="userdebug"
+            fi
+            lunch cm_$target-$variant
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
         fi
     fi
     return $?
@@ -687,7 +720,11 @@ function lunch()
     check_product $product
     if [ $? -ne 0 ]
     then
+<<<<<<< HEAD
         # if we can't find a product, try to grab it off the SM github
+=======
+        # if we can't find a product, try to grab it off the CM github
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
         T=$(gettop)
         pushd $T > /dev/null
         build/tools/roomservice.py $product
@@ -800,8 +837,13 @@ function tapas()
 function eat()
 {
     if [ "$OUT" ] ; then
+<<<<<<< HEAD
         MODVERSION=$(get_build_var SM_VERSION)
         ZIPFILE=$MODVERSION.zip
+=======
+        MODVERSION=$(get_build_var CM_VERSION)
+        ZIPFILE=cm-$MODVERSION.zip
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
         ZIPPATH=$OUT/$ZIPFILE
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
@@ -816,7 +858,11 @@ function eat()
             done
             echo "Device Found.."
         fi
+<<<<<<< HEAD
     if (adb shell getprop ro.sm.device | grep -q "$SM_BUILD");
+=======
+    if (adb shell getprop ro.cm.device | grep -q "$CM_BUILD");
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     then
         # if adbd isn't root we can't write to /cache/recovery/
         adb root
@@ -838,7 +884,11 @@ EOF
     fi
     return $?
     else
+<<<<<<< HEAD
         echo "The connected device does not appear to be $SM_BUILD, run away!"
+=======
+        echo "The connected device does not appear to be $CM_BUILD, run away!"
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     fi
 }
 
@@ -1853,7 +1903,11 @@ function installboot()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 > /dev/null
     adb wait-for-online remount
+<<<<<<< HEAD
     if (adb shell getprop ro.sm.device | grep -q "$SM_BUILD");
+=======
+    if (adb shell getprop ro.cm.device | grep -q "$CM_BUILD");
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     then
         adb push $OUT/boot.img /cache/
         for i in $OUT/system/lib/modules/*;
@@ -1864,7 +1918,11 @@ function installboot()
         adb shell chmod 644 /system/lib/modules/*
         echo "Installation complete."
     else
+<<<<<<< HEAD
         echo "The connected device does not appear to be $SM_BUILD, run away!"
+=======
+        echo "The connected device does not appear to be $CM_BUILD, run away!"
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     fi
 }
 
@@ -1898,13 +1956,21 @@ function installrecovery()
     sleep 1
     adb wait-for-online shell mount /system 2>&1 >> /dev/null
     adb wait-for-online remount
+<<<<<<< HEAD
     if (adb shell getprop ro.sm.device | grep -q "$SM_BUILD");
+=======
+    if (adb shell getprop ro.cm.device | grep -q "$CM_BUILD");
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     then
         adb push $OUT/recovery.img /cache/
         adb shell dd if=/cache/recovery.img of=$PARTITION
         echo "Installation complete."
     else
+<<<<<<< HEAD
         echo "The connected device does not appear to be $SM_BUILD, run away!"
+=======
+        echo "The connected device does not appear to be $CM_BUILD, run away!"
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     fi
 }
 
@@ -2327,7 +2393,11 @@ function dopush()
         echo "Device Found."
     fi
 
+<<<<<<< HEAD
     if (adb shell getprop ro.sm.device | grep -q "$SM_BUILD") || [ "$FORCE_PUSH" = "true" ];
+=======
+    if (adb shell getprop ro.cm.device | grep -q "$CM_BUILD") || [ "$FORCE_PUSH" = "true" ];
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     then
     # retrieve IP and PORT info if we're using a TCP connection
     TCPIPPORT=$(adb devices | egrep '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+[^0-9]+' \
@@ -2438,7 +2508,11 @@ EOF
     rm -f $OUT/.log
     return 0
     else
+<<<<<<< HEAD
         echo "The connected device does not appear to be $SM_BUILD, run away!"
+=======
+        echo "The connected device does not appear to be $CM_BUILD, run away!"
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     fi
 }
 
@@ -2446,7 +2520,11 @@ alias mmp='dopush mm'
 alias mmmp='dopush mmm'
 alias mmap='dopush mma'
 alias mkap='dopush mka'
+<<<<<<< HEAD
 alias smkap='dopush smka'
+=======
+alias cmkap='dopush cmka'
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
 
 function repopick() {
     T=$(gettop)
@@ -2456,7 +2534,11 @@ function repopick() {
 function fixup_common_out_dir() {
     common_out_dir=$(get_build_var OUT_DIR)/target/common
     target_device=$(get_build_var TARGET_DEVICE)
+<<<<<<< HEAD
     if [ ! -z $SM_FIXUP_COMMON_OUT ]; then
+=======
+    if [ ! -z $CM_FIXUP_COMMON_OUT ]; then
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
         if [ -d ${common_out_dir} ] && [ ! -L ${common_out_dir} ]; then
             mv ${common_out_dir} ${common_out_dir}-${target_device}
             ln -s ${common_out_dir}-${target_device} ${common_out_dir}
@@ -2632,6 +2714,7 @@ do
 done
 unset f
 
+<<<<<<< HEAD
 # ProjectControl
 function update() {
     $ANDROID_BUILD_TOP/build/UpdateProject $1
@@ -2640,6 +2723,11 @@ function update() {
 # Add completions
 check_bash_version && {
     dirs="sdk/bash_completion vendor/sm/bash_completion"
+=======
+# Add completions
+check_bash_version && {
+    dirs="sdk/bash_completion vendor/cm/bash_completion"
+>>>>>>> 801e8260f8d94d7c551b2826f93e9f6123c5d143
     for dir in $dirs; do
     if [ -d ${dir} ]; then
         for f in `/bin/ls ${dir}/[a-z]*.bash 2> /dev/null`; do
