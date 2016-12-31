@@ -88,13 +88,13 @@ function doName() {
      PUSHNAME="SudaMod/android${PROJECTLIST[project]}"
      if [[ "$i" =~ "vendor" ]]; then
           if [[ "$i" =~ "sm" ]]; then
-               PULLNAME="CyanogenMod/android${PROJECTLIST[project]}"
+               PULLNAME="Lineageos/android${PROJECTLIST[project]}"
                PUSHNAME="SudaMod/android_vendor_sm.git"
           else
                PULLNAME="TheMuppets/proprietary${PROJECTLIST[project]}"
           fi
      else
-          PULLNAME="CyanogenMod/android${PROJECTLIST[project]}"
+          PULLNAME="Lineageos/android${PROJECTLIST[project]}"
      fi
 }
 
