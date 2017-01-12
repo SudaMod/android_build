@@ -53,6 +53,7 @@ PRODUCT_PACKAGES += \
     VpnDialogs \
     MmsService \
     Sidebar \
+    TextBoom \
     framework-smartisanos-res \
     smartisanos
 
