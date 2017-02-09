@@ -2235,7 +2235,7 @@ SM_TARGET_PACKAGE := $(PRODUCT_OUT)/sudamod-$(SM_VERSION).zip
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(SM_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(SM_TARGET_PACKAGE) > $(SM_TARGET_PACKAGE).md5sum
+	$(hide) $(MD5SUM) $(SM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(SM_TARGET_PACKAGE).md5sum
 	@echo "Package Complete: $(SM_TARGET_PACKAGE)"
 
 endif    # build_ota_package
