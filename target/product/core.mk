@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
     Telecom \
     TeleService \
     VpnDialogs \
-    MmsService
+    MmsService \
+    Sidebar \
+    TextBoom \
+    framework-smartisanos-res \
+    smartisanos
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)
