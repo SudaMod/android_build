@@ -2239,7 +2239,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(SM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(SM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(SM_TARGET_PACKAGE).md5sum
-	@echo "Package Complete: $(SM_TARGET_PACKAGE)"
+	@echo "Package Complete: $(SM_TARGET_PACKAGE)" >&2
 
 endif    # build_ota_package
 # -----------------------------------------------------------------
