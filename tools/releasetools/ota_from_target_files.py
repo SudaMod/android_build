@@ -644,24 +644,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     script.Unmount("/data")
     script.AppendExtra("endif;")
 
-  builddate = GetBuildProp("ro.build.date", OPTIONS.info_dict);
-  releasetype = GetBuildProp("ro.sm.releasetype", OPTIONS.info_dict);
-
-  if OPTIONS.override_prop:
-    product = GetBuildProp("ro.build.product", OPTIONS.info_dict);
-  else:
-    device = GetBuildProp("ro.product.device", OPTIONS.info_dict);
-    brand = GetBuildProp("ro.product.brand", OPTIONS.info_dict);
-    product = "%s (%s)"%(brand, device);
  
-  script.Print("******************************************");
-  script.Print("* SudaMod");
-  script.Print("*");
-  script.Print("* Release: %s"%(releasetype));
-  script.Print("* Build date: %s"%(builddate));
-  script.Print("* Device: %s"%(product));
-  script.Print("******************************************");
-
   if "selinux_fc" in OPTIONS.info_dict:
     WritePolicyConfig(OPTIONS.info_dict["selinux_fc"], output_zip)
 
