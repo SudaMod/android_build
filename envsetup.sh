@@ -27,6 +27,12 @@ EOF
 
 cat <<EOF
 
+EOF
+
+    __print_cm_functions_help
+
+cat <<EOF
+
 Environment options:
 - SANITIZE_HOST: Set to 'true' to use ASAN for all host modules. Note that
                  ASAN_OPTIONS=detect_leaks=0 will be set by default until the
@@ -1701,6 +1707,7 @@ do
 done
 unset f
 
+<<<<<<< HEAD
 # ProjectControl
 function update() {
     $ANDROID_BUILD_TOP/build/UpdateProject $1
@@ -1709,6 +1716,11 @@ function update() {
 # Add completions
 check_bash_version && {
     dirs="sdk/bash_completion vendor/sm/bash_completion"
+=======
+# Add completions
+check_bash_version && {
+    dirs="sdk/bash_completion vendor/cm/bash_completion"
+>>>>>>> 86153fac0cebee346afbf9b883e21a0eb425f028
     for dir in $dirs; do
     if [ -d ${dir} ]; then
         for f in `/bin/ls ${dir}/[a-z]*.bash 2> /dev/null`; do
@@ -1721,4 +1733,8 @@ check_bash_version && {
 
 export ANDROID_BUILD_TOP=$(gettop)
 
+<<<<<<< HEAD
 . $ANDROID_BUILD_TOP/vendor/sm/build/envsetup.sh
+=======
+. $ANDROID_BUILD_TOP/vendor/cm/build/envsetup.sh
+>>>>>>> 86153fac0cebee346afbf9b883e21a0eb425f028
