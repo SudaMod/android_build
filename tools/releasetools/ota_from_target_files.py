@@ -721,10 +721,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   device = GetBuildProp("ro.sm.device", OPTIONS.info_dict);
   brand = GetBuildProp("ro.product.brand", OPTIONS.info_dict);
-  if not OPTIONS.override_prop:
-    product = "%s"%(device);
-  else:
-    product = "%s (%s)"%(brand,device);
+  product = "%s"%(device);
 
   script.Print("******************************************");
   script.Print("* SudaMod ");
