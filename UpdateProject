@@ -17,7 +17,7 @@
 #
 
 PROJECTPATH=($ANDROID_BUILD_TOP/android
- $ANDROID_BUILD_TOP/build
+ $ANDROID_BUILD_TOP/build/make
  $ANDROID_BUILD_TOP/frameworks/av
  $ANDROID_BUILD_TOP/frameworks/base
  $ANDROID_BUILD_TOP/frameworks/native
