@@ -25,7 +25,7 @@ PROJECTPATH=($ANDROID_BUILD_TOP/android
 # $ANDROID_BUILD_TOP/packages/apps/Browser
  $ANDROID_BUILD_TOP/packages/apps/Calendar
  $ANDROID_BUILD_TOP/packages/apps/Contacts
- $ANDROID_BUILD_TOP/packages/apps/ContactsCommon
+# $ANDROID_BUILD_TOP/packages/apps/ContactsCommon
 # $ANDROID_BUILD_TOP/packages/apps/CMFileManager
 # $ANDROID_BUILD_TOP/packages/apps/CMParts
 # $ANDROID_BUILD_TOP/packages/apps/CMUpdater
@@ -57,7 +57,7 @@ PROJECTLIST=(.git # ->android.git
 # _packages_apps_Browser.git
  _packages_apps_Calendar.git
  _packages_apps_Contacts.git
- _packages_apps_ContactsCommon.git
+# _packages_apps_ContactsCommon.git
 # _packages_apps_CMFileManager.git
 # _packages_apps_CMParts.git
 # _packages_apps_CMUpdater.git
