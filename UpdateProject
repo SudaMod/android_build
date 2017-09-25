@@ -53,7 +53,7 @@ PROJECTLIST=(.git # ->android.git
  _frameworks_av.git
  _frameworks_base.git
  _frameworks_native.git
-# _device_qcom_sepolicy.git
+ _device_qcom_sepolicy.git
 # _packages_apps_Browser.git
  _packages_apps_Calendar.git
  _packages_apps_Contacts.git
