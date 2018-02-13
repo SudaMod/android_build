@@ -31,6 +31,7 @@ PRODUCT_PACKAGES += \
     CertInstaller \
     Contacts \
     DeskClock \
+    DocumentsUI \
     DownloadProviderUi \
     Email \
     ExactCalculator \
