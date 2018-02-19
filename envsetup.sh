@@ -20,7 +20,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - sepgrep:   Greps on all local sepolicy files.
 - sgrep:     Greps on all local source files.
 - godir:     Go to the directory containing a file.
-
+- update: ProjectControl.
 EOF
 
     __print_sm_functions_help
@@ -549,12 +549,12 @@ function add_lunch_combo()
 }
 
 # add the default one here
-add_lunch_combo aosp_arm-eng
-add_lunch_combo aosp_arm64-eng
+# add_lunch_combo aosp_arm-eng
+# add_lunch_combo aosp_arm64-eng
 # add_lunch_combo aosp_mips-eng
 # add_lunch_combo aosp_mips64-eng
-add_lunch_combo aosp_x86-eng
-add_lunch_combo aosp_x86_64-eng
+# add_lunch_combo aosp_x86-eng
+# add_lunch_combo aosp_x86_64-eng
 
 function print_lunch_menu()
 {
@@ -625,16 +625,16 @@ function lunch()
     check_product $product
     if [ $? -ne 0 ]
     then
-        # if we can't find a product, try to grab it off the LineageOS GitHub
+        # if we can't find a product, try to grab it off the SM github
         T=$(gettop)
         cd $T > /dev/null
-        vendor/lineage/build/tools/roomservice.py $product
+        vendor/sm/build/tools/roomservice.py $product
         cd - > /dev/null
         check_product $product
     else
         T=$(gettop)
         cd $T > /dev/null
-        vendor/lineage/build/tools/roomservice.py $product true
+        vendor/sm/build/tools/roomservice.py $product true
         cd - > /dev/null
     fi
 
@@ -1744,6 +1744,11 @@ do
     . $f
 done
 unset f
+
+# ProjectControl
+function update() {
+    $ANDROID_BUILD_TOP/build/UpdateProject $1
+}
 
 addcompletions
 

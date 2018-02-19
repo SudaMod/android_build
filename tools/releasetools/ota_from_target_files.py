@@ -504,6 +504,21 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   # Place a copy of file_contexts.bin into the OTA package which will be used
   # by the recovery program.
+  builddate = GetBuildProp("ro.build.date", OPTIONS.info_dict);
+  releasetype = GetBuildProp("ro.sm.releasetype", OPTIONS.info_dict);
+
+  device = GetBuildProp("ro.sm.device", OPTIONS.info_dict);
+  brand = GetBuildProp("ro.product.brand", OPTIONS.info_dict);
+  product = "%s"%(device);
+
+  script.Print("******************************************");
+  script.Print("* SudaMod ");
+  script.Print("*");
+  script.Print("* Release: %s"%(releasetype));
+  script.Print("* Build date: %s"%(builddate));
+  script.Print("* Device: %s"%(product));
+  script.Print("******************************************");
+
   if "selinux_fc" in OPTIONS.info_dict:
     WritePolicyConfig(OPTIONS.info_dict["selinux_fc"], output_zip)
 
@@ -579,7 +594,7 @@ endif;
 
   common.ZipWriteStr(output_zip, "system/build.prop",
                      ""+input_zip.read("SYSTEM/build.prop"))
-  common.ZipWriteStr(output_zip, "META-INF/org/lineageos/releasekey",
+  common.ZipWriteStr(output_zip, "META-INF/org/sudamod/releasekey",
                      ""+input_zip.read("META/releasekey.txt"))
 
 def WritePolicyConfig(file_name, output_zip):
