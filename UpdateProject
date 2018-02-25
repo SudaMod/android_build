@@ -18,7 +18,7 @@
 
 PROJECTPATH=(
  $ANDROID_BUILD_TOP/android
- $ANDROID_BUILD_TOP/android/lineage-sdk
+ $ANDROID_BUILD_TOP/lineage-sdk
  $ANDROID_BUILD_TOP/build/make
  $ANDROID_BUILD_TOP/build/soong
 # $ANDROID_BUILD_TOP/frameworks/av
