@@ -61,5 +61,6 @@ fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
 
 echo "ro.sm.device=$SM_DEVICE"
+echo "ro.sm.releasetype=$SM_BUILDTYPE"
 
 echo "# end build properties"
