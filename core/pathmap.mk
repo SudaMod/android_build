@@ -76,7 +76,7 @@ FRAMEWORKS_BASE_SUBDIRS := \
 	    drm \
 	    opengl \
 	    sax \
-        suda \
+            suda \
 	    telecomm \
 	    telephony \
 	    wifi \
