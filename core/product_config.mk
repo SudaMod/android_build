@@ -171,6 +171,7 @@ include $(BUILD_SYSTEM)/device.mk
 # A SudaMod build needs only the SudaMod product makefiles.
 ifneq ($(SM_BUILD),)
   all_product_configs := $(shell find device -path "*/$(SM_BUILD)/sm.mk")
+  all_product_configs += $(wildcard vendor/sm/build/target/product/lineage_$(SM_BUILD).mk)
 else
   ifneq ($(strip $(TARGET_BUILD_APPS)),)
   # An unbundled app build needs only the core product makefiles.
