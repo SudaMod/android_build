@@ -422,7 +422,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
       metadata=metadata,
       info_dict=OPTIONS.info_dict)
 
-  assert HasRecoveryPatch(input_zip)
+  #  has_recovery_patch = HasRecoveryPatch(input_zip)
+  has_recovery_patch = True
 
   metadata["ota-type"] = "BLOCK"
 
