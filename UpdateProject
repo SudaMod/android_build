@@ -38,6 +38,7 @@ PROJECTPATH=($ANDROID_BUILD_TOP/android
  $ANDROID_BUILD_TOP/packages/apps/PackageInstaller
  $ANDROID_BUILD_TOP/packages/apps/PhoneCommon
  $ANDROID_BUILD_TOP/packages/apps/Settings
+ $ANDROID_BUILD_TOP/packages/apps/SetupWizard
  $ANDROID_BUILD_TOP/packages/apps/Stk
  $ANDROID_BUILD_TOP/packages/apps/Trebuchet
  $ANDROID_BUILD_TOP/packages/providers/ContactsProvider
@@ -70,6 +71,7 @@ PROJECTLIST=(.git # ->android.git
  _packages_apps_PackageInstaller.git
  _packages_apps_PhoneCommon.git
  _packages_apps_Settings.git
+ _packages_apps_SetupWizard.git
  _packages_apps_Stk.git
  _packages_apps_Trebuchet.git
  _packages_providers_ContactsProvider.git
