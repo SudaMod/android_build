@@ -49,7 +49,7 @@ PROJECTPATH=(
  $ANDROID_BUILD_TOP/packages/services/Telecomm
  $ANDROID_BUILD_TOP/packages/services/Telephony
  $ANDROID_BUILD_TOP/system/core
-# $ANDROID_BUILD_TOP/system/extras/su
+ $ANDROID_BUILD_TOP/system/extras/su
  $ANDROID_BUILD_TOP/vendor/sm
 )
 
@@ -85,7 +85,7 @@ PROJECTLIST=(.git # ->android.git
  _packages_services_Telecomm.git
  _packages_services_Telephony.git
  _system_core.git
-# _system_extras_su.git
+ _system_extras_su.git
  _vendor_lineage.git
 )
 
